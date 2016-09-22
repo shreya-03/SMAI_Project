@@ -16,7 +16,15 @@ if __name__ == "__main__":
 	dictionary_16=dict()
 	dictionary_17=dict()
 	for row in temp:
+		count=0
 		for index,item in enumerate(row):	
+			if index>=24 and index<=28:
+				if item=='NA':
+					count+=1
+			if count==5:
+				row[0]=1
+			if count<5:
+				row[0]=0
 			if index==8:
 				if item in dictionary_8.keys():
 					row[index]=dictionary_8[item]
@@ -50,7 +58,7 @@ if __name__ == "__main__":
 			elif item=='':
 				row[index]=-100001
 			else:
-				row[index]=int(item)
+				row[index]=int(item)	
 	csv_file = open("revised40.csv", "wb")
 	writer = csv.writer(csv_file)
 	writer.writerows(temp)
