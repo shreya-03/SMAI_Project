@@ -1,12 +1,11 @@
 #!/usr/bin/python
 import csv
 if __name__ == "__main__":
-	f=open('40.csv','rU')
+	f=open('1000.csv','rU')
 	T1=csv.reader(f)
 	temp=[]
 	for rows in T1:
 		temp.append(rows)
-	global count_8,count_10,count_16,count_17,dictionary_8,dictionary_10,dictionary_16,dictionary_17
 	count_8=0
 	count_10=0
 	count_16=0
@@ -21,9 +20,9 @@ if __name__ == "__main__":
 			if index>=24 and index<=28:
 				if item=='NA':
 					count+=1
-			if count==5:
+			if count==5:		# flight is not delayed
 				row[0]=1
-			if count<5:
+			if count<5:			# flight is delayed
 				row[0]=0
 			if index==8:
 				if item in dictionary_8.keys():
@@ -59,6 +58,6 @@ if __name__ == "__main__":
 				row[index]=-100001
 			else:
 				row[index]=int(item)	
-	csv_file = open("revised40.csv", "wb")
+	csv_file = open("revised1000.csv", "wb")
 	writer = csv.writer(csv_file)
 	writer.writerows(temp)
