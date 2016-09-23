@@ -1,3 +1,4 @@
+# To run this file filename.csv file which has processed data is given as input through cmd line argument
 #!/usr/bin/python
 import csv
 import sys
