@@ -1,7 +1,8 @@
+# To execute this file input given as command line argument is the filename.csv which has the original data
 #!/usr/bin/python
-import csv
+import csv,sys
 if __name__ == "__main__":
-	f=open('1000.csv','rU')
+	f=open(sys.argv[1],'rU')
 	T1=csv.reader(f)
 	temp=[]
 	for rows in T1:
@@ -10,13 +11,17 @@ if __name__ == "__main__":
 	count_10=0
 	count_16=0
 	count_17=0
+#	cnt_row=0
 	dictionary_8=dict()
 	dictionary_10=dict()
 	dictionary_16=dict()
 	dictionary_17=dict()
 	for row in temp:
 		count=0
+#		cnt_row+=1
+#		print cnt_row
 		for index,item in enumerate(row):	
+#			print index,item
 			if index>=24 and index<=28:
 				if item=='NA':
 					count+=1
@@ -54,10 +59,16 @@ if __name__ == "__main__":
 					count_17+=1
 			elif item=='NA':
 				row[index]=-10000
-			elif item=='':
-				row[index]=-100001
+			elif index==22:
+				if item=='':
+					row[index]=-100001
+				elif item=='A':
+					row[index]=1
+				else:
+					row[index]=2
 			else:
-				row[index]=int(item)	
-	csv_file = open("revised1000.csv", "wb")
+				row[index]=int(item)
+	filename='revised'+sys.argv[1]
+	csv_file = open(filename, "wb")
 	writer = csv.writer(csv_file)
 	writer.writerows(temp)
