@@ -28,7 +28,7 @@ if __name__ == "__main__":
 			if count==5:		# flight is not delayed
 				row[0]=1
 			if count<5:			# flight is delayed
-				row[0]=0
+				row[0]=2
 			if index==8:
 				if item in dictionary_8.keys():
 					row[index]=dictionary_8[item]
