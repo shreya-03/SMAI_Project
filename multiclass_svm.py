@@ -43,7 +43,7 @@ if __name__ == "__main__":
 		for rows in T1:
 			features.append([int(elements) for elements in rows[1:23]])
 			classes.append(int(rows[0]))
-		lin_clf=svm.SVC(C=0.01,kernel='rbf')
+		lin_clf=svm.SVC(C=0.01,kernel='linear')
 		lin_clf.fit(features,classes)
 		test_f=open(sys.argv[2],'rU')
 		T2=csv.reader(test_f)
@@ -54,4 +54,4 @@ if __name__ == "__main__":
 		print 'Precision:', precision_score(testl_classes,testu_classes,average='weighted')
 		print 'Recall:', recall_score(testl_classes,testu_classes,average='weighted')
 		print 'F1 score:', f1_score(testl_classes,testu_classes,average='weighted')
-	print confusion_matrix(testl_classes,testu_classes)
+		print confusion_matrix(testl_classes,testu_classes)
